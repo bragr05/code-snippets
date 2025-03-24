@@ -1,8 +1,6 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/bragr05/code-snippets?color=f6b61f)
 ![GitHub last commit](https://img.shields.io/github/last-commit/bragr05/code-snippets?color=027c4d)
 
-# Code Snippets
-
 Repository for storing useful code snippets across different technologies and programming languages. This repository serves as a quick reference and collection of reusable code.
 
 ## 🚀 Content
