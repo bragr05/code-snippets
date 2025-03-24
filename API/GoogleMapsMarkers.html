@@ -1,0 +1,60 @@
+<script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&loading=async&v=weekly&libraries=marker"
+></script>
+
+<style>
+    #map {
+        height: 600px;
+    }
+</style>
+
+<div id="map"></div>
+
+<script>
+    const cities = [
+        { name: "Central Park, Nueva York", lat: 40.7829, lng: -73.9654 },
+        { name: "Times Square, Nueva York", lat: 40.7589, lng: -73.9851 },
+        {
+            name: "Estatua de la Libertad, Nueva York",
+            lat: 40.6892,
+            lng: -74.0445,
+        },
+        {
+            name: "Empire State Building, Nueva York",
+            lat: 40.7484,
+            lng: -73.9857,
+        },
+        { name: "Puente de Brooklyn, Nueva York", lat: 40.706, lng: -73.9968 },
+    ];
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: { lat: 40.7128, lng: -74.006 },
+        mapId: "terrain",
+    });
+
+    const onlyLatLng = cities.map((city) => {
+        delete city.name;
+        return city;
+    });
+
+    const polylines = new google.maps.Polyline({
+        path: onlyLatLng,
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+    });
+
+    polylines.setMap(map);
+
+    cities.forEach((city) => {
+        new google.maps.marker.AdvancedMarkerElement({
+            map: map,
+            position: { lat: city.lat, lng: city.lng },
+            title: city.name,
+        });
+    });
+</script>
